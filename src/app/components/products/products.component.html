@@ -1,0 +1,130 @@
+<!-- Day2 -->
+<!--data binding-->
+<!-- interpolation -->
+<!-- <h1>{{productsList[0].productName}}</h1> -->
+<!-- interpolation  -->
+<!-- <img src="{{product_list.productImgUrl}}" alt="img" /> -->
+<!-- property binding -->
+<!-- <img [src]="productsList[0].productImgUrl" alt="img" /> -->
+<!--event binding (eventName)="method()"-->
+<!-- for of -->
+<!-- ngFor , ngIf v2 ===> v19  
+   @for ( item of arrayName ; track ){
+    htmlContent
+}
+@if(){
+  } -->
+
+<!-- <button class="btn btn-primary mt-4" (click)="toggle()"> show/hide images </button> -->
+<button class="btn btn-primary mt-4" (click)="toggle()">
+    {{ toggleImg ? "hide" : "show" }}/images
+  </button>
+  <h1>{{ date | date : "short" }}</h1>
+  <p>Total Order Price : {{ TotalOrder }}</p>
+  <!-- Day3 -->
+  <div>
+    <!-- property binding -->
+    <!-- <input type="text" [value]="userName" /> -->
+    <!-- two way binding [()] -->
+    <!-- <input type="text" [(ngModel)]="userName"/> -->
+    <label class="label-control mb-2">Filter Products</label>
+    <input type="text" class="form-control" [(ngModel)]="filterByName" />
+  </div>
+  <!-- <h1>{{userName}}</h1> -->
+  <div class="row">
+    <!-- <div class="col-md-4" *ngFor="let items of productsList">
+    
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{items.productName}}</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+    </div> -->
+  
+    @for ( items of productsAfterSearch ; track items.productId) {
+    <div class="col-md-3 mt-4">
+      <div class="card" style="width: 18rem">
+        @if(toggleImg){
+        <img
+          class="card-img-top img-fluid"
+          src="{{ items.productImgUrl }}"
+          alt="Card image cap"
+          appImgStyle
+       
+        />
+        }
+        <!-- @else {
+                <p>image not found</p>
+            } -->
+  
+        <!-- <img class="card-img-top img-fluid" [src]="items.productImgUrl" alt="Card image cap"> -->
+        <div class="card-body">
+          <!-- attribute directives ===>   ngClass ngStyle -->
+          <!-- property binding class , style -->
+          <!-- [class] -->
+          <!-- <h5 class="card-title" [class.text-danger]="items.productQuantity==0">{{ items.productName }}</h5> -->
+          <!-- <h5 class="card-title" [class.customclass]="items.productQuantity==0" >{{ items.productName }}</h5> -->
+          <!-- attribute directive [ngClass]="{'classname':}" -->
+          <!-- <h5 class="card-title" [ngClass]="{'text-danger':items.productQuantity==0,'text-primary':items.productQuantity>0}" >{{ items.productName }}</h5> -->
+          <!-- propety [style] ===>ternary operator -->
+          <!-- <h5 class="card-title" [style.background-color]="(items.productQuantity==0)?'red':'blue' " >{{ items.productName }}</h5> -->
+          <!-- attribute directive [ngStyle]="{'propname'?'':'',''}" -->
+          <!-- <h5 class="card-title" [ngStyle]="{'background-color':items.productQuantity==0?'red':'blue','color':items.productQuantity==0?'yellow':'red'}" >{{ items.productName }}</h5> -->
+          <h5 class="card-title">{{ items.productName | uppercase }}</h5>
+          <h5 class="card-title">quantity : {{ items.productQuantity }}</h5>
+          <div class="d-flex justify-content-between">
+            <h5 class="card-title text-decoration-line-through">
+              {{ items.productPrice | currency : "EUR" }}
+            </h5>
+            <h5 class="card-title">
+              {{ items.productPrice | discount : 20 | currency : "EUR" }}
+            </h5>
+          </div>
+  
+          <div class="d-flex justify-content-between">
+            <button
+              class="btn btn-primary"
+              [disabled]="items.productQuantity == 0"
+            >
+              <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+            </button>
+  
+            @switch (items.productQuantity){ @case(0){
+            <p class="text-danger">out of stock</p>
+            } @case (1) {
+            <p class="text-warning">last item stock</p>
+  
+            } @default {
+            <p class="text-primary">instock</p>
+            } }
+          </div>
+  
+          <div class="d-flex mt-2">
+            <!-- template variable / reference #name -->
+            <input type="number" #numberOfQty />
+            <button
+              class="btn btn-dark"
+              (click)="TotalNumberOrder(numberOfQty.value, items.productPrice)"
+            >
+              buy
+            </button>
+          </div>
+          <!-- <button class="btn btn-primary" [disabled]="items.productQuantity==0" >   <i class="fa-solid fa-cart-shopping"></i> Add to Cart</button> -->
+          <!-- <button class="btn btn-primary" [hidden]="items.productQuantity==0" >   <i class="fa-solid fa-cart-shopping"></i> Add to Cart</button> -->
+          <!-- <button class="btn btn-primary" *ngIf="items.productQuantity>0" >   <i class="fa-solid fa-cart-shopping"></i> Add to Cart</button> -->
+          <!-- @if(items.productQuantity==0){ out of stock }@else {
+            <button class="btn btn-primary">
+              <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+            </button>
+            } -->
+        </div>
+      </div>
+    </div>
+    }@empty {
+    <h1 class="text-center">no products</h1>
+    }
+  </div>
+  
