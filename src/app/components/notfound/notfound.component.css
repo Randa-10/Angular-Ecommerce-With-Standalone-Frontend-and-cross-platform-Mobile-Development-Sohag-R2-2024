@@ -1,0 +1,118 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: #e8f0fe;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+  width:95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.error-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+}
+
+.error-illustration img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+/*     animation: slideIn 1s ease-out; */
+  animation: slideIn 3s ease-out forwards, slideOut 3s ease-out forwards 3s;
+    animation-iteration-count: infinite;
+}
+
+.error-code {
+    font-size: 6rem;
+    color: #ff5733;
+    margin: 0;
+    animation: fadeIn 1s ease-in;
+}
+
+.error-message p {
+    font-size: 1.25rem;
+    color: #555;
+}
+
+.home-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    color: #ffffff;
+    background: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 1rem;
+}
+
+.home-button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+.search-container {
+    margin-top: 1.5rem;
+}
+
+#search {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+}
+
+.search-container button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #fff;
+    background: #28a745;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.search-container button:hover {
+    background: #218838;
+    transform: scale(1.05);
+}
+
+.footer {
+    margin-top: 2rem;
+    font-size: 0.875rem;
+    color: #777;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+@keyframes slideOut {
+      from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

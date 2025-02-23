@@ -1,3 +1,5 @@
+<!-- Day4 -->
+ <!-- product child -->
 <!-- Day2 -->
 <!--data binding-->
 <!-- interpolation -->
@@ -19,16 +21,16 @@
 <button class="btn btn-primary mt-4" (click)="toggle()">
     {{ toggleImg ? "hide" : "show" }}/images
   </button>
-  <h1>{{ date | date : "short" }}</h1>
-  <p>Total Order Price : {{ TotalOrder }}</p>
+  <!-- <h1>{{ date | date : "short" }}</h1>
+  <p>Total Order Price : {{ TotalOrder }}</p> -->
   <!-- Day3 -->
   <div>
     <!-- property binding -->
     <!-- <input type="text" [value]="userName" /> -->
     <!-- two way binding [()] -->
     <!-- <input type="text" [(ngModel)]="userName"/> -->
-    <label class="label-control mb-2">Filter Products</label>
-    <input type="text" class="form-control" [(ngModel)]="filterByName" />
+    <!-- <label class="label-control mb-2">Filter Products</label>
+    <input type="text" class="form-control" [(ngModel)]="filterByName" /> -->
   </div>
   <!-- <h1>{{userName}}</h1> -->
   <div class="row">
@@ -88,6 +90,7 @@
             <button
               class="btn btn-primary"
               [disabled]="items.productQuantity == 0"
+              (click)="addToCart(items)"
             >
               <i class="fa-solid fa-cart-shopping"></i> Add to Cart
             </button>
@@ -102,16 +105,16 @@
             } }
           </div>
   
-          <div class="d-flex mt-2">
+          <!-- <div class="d-flex mt-2"> -->
             <!-- template variable / reference #name -->
-            <input type="number" #numberOfQty />
+            <!-- <input type="number" #numberOfQty />
             <button
               class="btn btn-dark"
               (click)="TotalNumberOrder(numberOfQty.value, items.productPrice)"
             >
               buy
             </button>
-          </div>
+          </div> -->
           <!-- <button class="btn btn-primary" [disabled]="items.productQuantity==0" >   <i class="fa-solid fa-cart-shopping"></i> Add to Cart</button> -->
           <!-- <button class="btn btn-primary" [hidden]="items.productQuantity==0" >   <i class="fa-solid fa-cart-shopping"></i> Add to Cart</button> -->
           <!-- <button class="btn btn-primary" *ngIf="items.productQuantity>0" >   <i class="fa-solid fa-cart-shopping"></i> Add to Cart</button> -->

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Iproduct } from '../../Models/iproduct';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -150,7 +150,8 @@ this.toggleImg=!this.toggleImg
   //set vs get 
   //Day3
   productsAfterSearch:Iproduct[]=[]
- set filterByName(vaule:string){
+  //day4
+ @Input() set filterByNameInChild(vaule:string){
     // console.log( this.deSearchProduct(vaule));
    this.productsAfterSearch=this.deSearchProduct(vaule)
 
@@ -160,5 +161,16 @@ this.toggleImg=!this.toggleImg
     return  this.productsList.filter((Prd:Iproduct)=>
     Prd.productName.toLowerCase().includes(filterValue)
   )
+  }
+
+
+  //day4
+//create event
+@Output() productsInChild:EventEmitter<Iproduct>=new EventEmitter<Iproduct>()
+
+  addToCart(prd:Iproduct){
+// console.log(prd);
+//fire event
+this.productsInChild.emit(prd) 
   }
 }
