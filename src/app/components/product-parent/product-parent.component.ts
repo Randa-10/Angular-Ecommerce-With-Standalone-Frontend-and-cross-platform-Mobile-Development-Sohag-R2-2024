@@ -15,7 +15,7 @@ export class ProductParentComponent implements OnInit ,OnChanges ,AfterViewInit{
   // filterByName:string|undefined
   // filterByName:string|null=null
   filterByName!: string; // non null assertion
-@ViewChild('Ref') Dom!:ElementRef
+// @ViewChild('Ref') Dom!:ElementRef
   productsInParent: Iproduct[] = [];
   AddToCartInParent(prd: Iproduct) {
     let PrdInArr = this.productsInParent.find(

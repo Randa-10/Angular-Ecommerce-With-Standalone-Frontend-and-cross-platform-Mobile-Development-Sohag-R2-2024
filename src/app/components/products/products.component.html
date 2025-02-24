@@ -48,7 +48,7 @@
   
     @for ( items of productsAfterSearch ; track items.productId) {
     <div class="col-md-3 mt-4">
-      <div class="card" style="width: 18rem">
+      <div class="card" style="width: 18rem" >
         @if(toggleImg){
         <img
           class="card-img-top img-fluid"
@@ -86,7 +86,10 @@
             </h5>
           </div>
   
-          <div class="d-flex justify-content-between">
+          <!-- <button class="btn btn-dark" (click)="goDetails(items.productId)">Details</button> -->
+          <button class="btn btn-dark" [routerLink]="['/products',items.productId]" routerLinkActive="router-link-active" >Details</button>
+         
+          <!-- <div class="d-flex justify-content-between">
             <button
               class="btn btn-primary"
               [disabled]="items.productQuantity == 0"
@@ -103,7 +106,7 @@
             } @default {
             <p class="text-primary">instock</p>
             } }
-          </div>
+          </div> -->
   
           <!-- <div class="d-flex mt-2"> -->
             <!-- template variable / reference #name -->
