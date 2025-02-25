@@ -1,0 +1,110 @@
+<!-- <button (click)="addNewUser()">add new user</button> -->
+<!-- template-driven form  ==> html-->
+<div class="container mt-5">
+  <p>touched:{{ FirstName.touched }}</p>
+  <p>dirty:{{ FirstName.dirty }}</p>
+  <p>valid:{{ FirstName.valid }}</p>
+
+  <div class="form-container">
+    <h3 class="form-header">Sign Up Form</h3>
+
+    <form (ngSubmit)="addNewUser()" #SignUpFrom="ngForm">
+      <!-- Name Input -->
+      <div class="mb-3">
+        <label for="name" class="form-label">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          placeholder="Enter your last name"
+          [(ngModel)]="userProp.fname"
+          name="fname"
+          required
+          minlength="3"
+          #FirstName="ngModel"
+          [ngClass]="{
+            'is-invalid':
+              (FirstName.dirty || FirstName.touched) && FirstName.invalid,
+            'is-valid': FirstName.valid
+          }"
+        />
+        <span class="invalid-feedback">
+          @if(FirstName.errors?.['required']){
+          <p>fname is required</p>
+          }@else if(FirstName.errors?.['minlength']){
+          <p>minlength at least 3</p>
+          }
+        </span>
+      </div>
+      <div class="mb-3">
+        <label for="name" class="form-label">last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          placeholder="Enter your last name"
+          [(ngModel)]="userProp.lname"
+          name="lastName"
+          required
+          maxlength="20"
+          #LastName="ngModel"
+          [ngClass]="{'is-invalid':(LastName.dirty||LastName.touched)&&LastName.invalid,
+            'is-valid':LastName.valid
+          }"
+        />
+        <div>
+            @if (LastName.errors?.['required']) {
+            <p>last name is required </p>  
+            } @else if(LastName.errors?.['maxlength']) {
+             <p>maxlength </p>  
+            }
+            
+           
+
+        </div>
+      </div>
+      <!-- Email Input -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email Address</label>
+        <input
+          type="text"
+          class="form-control"
+          id="email"
+          placeholder="Enter your email"
+          [(ngModel)]="userProp.email"
+          name="email"
+        />
+      </div>
+
+      <!-- Password Input -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Enter your password"
+          [(ngModel)]="userProp.password"
+          name="password"
+        />
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="btn btn-custom w-100"
+        [disabled]="SignUpFrom.invalid"
+      >
+        Submit
+      </button>
+    </form>
+
+    <!-- Footer -->
+    <div class="form-footer">
+      <p>
+        Already have an account?
+        <a href="#" class="text-decoration-none">Login</a>
+      </p>
+    </div>
+  </div>
+</div>

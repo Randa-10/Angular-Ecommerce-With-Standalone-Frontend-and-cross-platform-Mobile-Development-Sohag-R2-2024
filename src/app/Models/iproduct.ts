@@ -3,7 +3,7 @@ export interface Iproduct {
     productPrice:number;
     productQuantity:number;
     categoryId:number;
-    productId:number;
+    id:number;
     productImgUrl:string;
     productDetails?:string
 }

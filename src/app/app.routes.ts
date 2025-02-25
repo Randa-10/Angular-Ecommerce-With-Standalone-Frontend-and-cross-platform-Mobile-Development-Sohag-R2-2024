@@ -5,6 +5,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { MainComponent } from './components/main/main.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 export const routes: Routes = [
   //first match wins
@@ -29,7 +30,8 @@ export const routes: Routes = [
         title: 'product page',
       }, //dynamic routes
       {path:'products/:idFromUrl',component:ProductDetailsComponent},
-      { path: 'aboutUs', component: AboutUsComponent, title: 'about page' },
+      { path: 'signUp', component: SignUpComponent, title: '' },
+
     ],
   },
   //wild card routes

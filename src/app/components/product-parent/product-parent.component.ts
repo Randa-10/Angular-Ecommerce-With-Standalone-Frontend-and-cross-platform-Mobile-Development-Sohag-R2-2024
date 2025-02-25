@@ -19,7 +19,7 @@ export class ProductParentComponent implements OnInit ,OnChanges ,AfterViewInit{
   productsInParent: Iproduct[] = [];
   AddToCartInParent(prd: Iproduct) {
     let PrdInArr = this.productsInParent.find(
-      (Pid) => Pid.productId === prd.productId
+      (Pid) => Pid.id === prd.id
     );
     if (PrdInArr) {
       PrdInArr.productQuantity++;
