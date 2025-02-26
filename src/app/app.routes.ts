@@ -6,6 +6,9 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { MainComponent } from './components/main/main.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { LoginComponent } from './components/login/login.component';
+import { authGuard } from './Guards/auth.guard';
+import { SignupReactiveFormComponent } from './components/signup-reactive-form/signup-reactive-form.component';
 
 export const routes: Routes = [
   //first match wins
@@ -28,9 +31,14 @@ export const routes: Routes = [
         path: 'products',
         component: ProductParentComponent,
         title: 'product page',
+        canActivate:[authGuard]
       }, //dynamic routes
       {path:'products/:idFromUrl',component:ProductDetailsComponent},
       { path: 'signUp', component: SignUpComponent, title: '' },
+      { path: 'signUpReative', component: SignupReactiveFormComponent, title: '' },
+
+      { path: 'login', component: LoginComponent, title: '' },
+
 
     ],
   },

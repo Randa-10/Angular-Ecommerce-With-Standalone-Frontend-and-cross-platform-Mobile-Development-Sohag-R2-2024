@@ -15,9 +15,14 @@
          </li>
          <li class="nav-item">
            <a class="nav-link" routerLink="/signUp" routerLinkActive="active-link" >Sign Up </a>
-         </li>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/signUpReative" routerLinkActive="active-link" >signUp Reative</a>
+           </li>
          <li class="nav-item">
-           <a class="nav-link "  routerLink="/Disabled" routerLinkActive="active-link" >Disabled</a>
+           <a class="nav-link "  routerLink="/login" routerLinkActive="active-link" [hidden]="isUserLoggedInNav" >login</a>
+           <a class="nav-link "  routerLink="/login" routerLinkActive="active-link" [hidden]="!isUserLoggedInNav">logout</a>
+
          </li>
        </ul>
      </div> </div>
